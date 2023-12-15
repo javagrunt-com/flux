@@ -11,4 +11,4 @@ spec:
         autoscaling.knative.dev/window: "900s"
     spec:
       containers:
-        - image: dashaun/com.javagrunt.listener.youtube:v0.0.3
+        - image: dashaun/com.javagrunt.listener.youtube:v0.0.4
