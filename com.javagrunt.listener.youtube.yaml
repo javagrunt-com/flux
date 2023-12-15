@@ -8,7 +8,7 @@ spec:
     metadata:
       annotations:
         autoscaling.knative.dev/max-scale: "1"
-        autoscaling.knative.dev/window: "30s"
+        autoscaling.knative.dev/window: "900s"
     spec:
       containers:
         - image: dashaun/com.javagrunt.listener.youtube:v0.0.3
