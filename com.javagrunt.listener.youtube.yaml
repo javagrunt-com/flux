@@ -11,7 +11,7 @@ spec:
         autoscaling.knative.dev/window: "900s"
     spec:
       containers:
-        - image: dashaun/com.javagrunt.listener.youtube:v0.0.6
+        - image: dashaun/com.javagrunt.listener.youtube:v0.0.7
           env:
           - name: ZIPKIN_ENDPOINT
             value: http://openzipkin.javagrunt-com.svc.cluster.local:9411/api/v2/spans
