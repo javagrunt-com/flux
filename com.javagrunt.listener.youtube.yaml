@@ -15,3 +15,6 @@ spec:
           env:
           - name: ZIPKIN_ENDPOINT
             value: http://openzipkin.javagrunt-com.svc.cluster.local:9411/api/v2/spans
+          envFrom:
+          - secretRef:
+              name: redis-cloud  
