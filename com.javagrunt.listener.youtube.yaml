@@ -3,14 +3,14 @@ kind: Service
 metadata:
   name: youtube-listener
   namespace: javagrunt-com
-  labels:
-    - networking.knative.dev/visibility: cluster-local
 spec:
   template:
     metadata:
       annotations:
         autoscaling.knative.dev/max-scale: "1"
         autoscaling.knative.dev/window: "900s"
+      labels:
+        - networking.knative.dev/visibility: cluster-local
     spec:
       containers:
         - image: dashaun/com.javagrunt.listener.youtube:v0.0.10
