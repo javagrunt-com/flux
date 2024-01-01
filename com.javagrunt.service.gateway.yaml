@@ -13,7 +13,7 @@ spec:
         networking.knative.dev/visibility: cluster-local
     spec:
       containers:
-        - image: dashaun/com.javagrunt.service.gateway:v0.0.10
+        - image: dashaun/com.javagrunt.service.gateway:v0.0.11
           env:
           - name: ZIPKIN_ENDPOINT
             value: http://openzipkin.javagrunt-com.svc.cluster.local:9411/api/v2/spans
