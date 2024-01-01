@@ -8,7 +8,7 @@ spec:
     metadata:
       annotations:
         autoscaling.knative.dev/max-scale: "1"
-        autoscaling.knative.dev/window: "900s"
+        autoscaling.knative.dev/window: "30s"
       labels:
         networking.knative.dev/visibility: cluster-local
     spec:
