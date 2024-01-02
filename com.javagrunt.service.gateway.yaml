@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: gateway-service
   namespace: javagrunt-com
+  labels:
+    networking.knative.dev/visibility: cluster-local
 spec:
   template:
     metadata:
@@ -10,8 +12,6 @@ spec:
         autoscaling.knative.dev/max-scale: "1"
         autoscaling.knative.dev/min-scale: "1"
         autoscaling.knative.dev/window: "60s"
-      labels:
-        networking.knative.dev/visibility: cluster-local
     spec:
       containers:
         - image: dashaun/com.javagrunt.service.gateway:v0.0.12
