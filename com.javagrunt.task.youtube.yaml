@@ -4,7 +4,7 @@ metadata:
   name: youtube-task
   namespace: javagrunt-com
 spec:
-  schedule: "* * * * *"
+  schedule: "@hourly"
   jobTemplate:
     spec:
       template:
