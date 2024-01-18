@@ -13,6 +13,11 @@ spec:
             - name: youtube-task
               image: dashaun/com.javagrunt.task.youtube:v0.0.2
               imagePullPolicy: IfNotPresent
+              env:
+              - name: YOUTUBE_FEED_URL
+                value: https://www.youtube.com/feeds/videos.xml?channel_id=UCuGoHRQbVXa4LxepmPOdUfQ
+              - name: ZIPKIN_ENDPOINT
+                value: http://openzipkin.javagrunt-com.svc.cluster.local:9411/api/v2/spans  
               envFrom:
               - secretRef:
                   name: yugabyte-cloud
