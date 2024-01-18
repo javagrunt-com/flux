@@ -13,4 +13,7 @@ spec:
             - name: youtube-task
               image: dashaun/com.javagrunt.task.youtube:v0.0.2
               imagePullPolicy: IfNotPresent
+              envFrom:
+              - secretRef:
+                  name: yugabyte-cloud
           restartPolicy: OnFailure
