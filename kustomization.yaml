@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - com.javagrunt.listener.youtube.yaml
   - com.javagrunt.service.gateway.yaml
+  - com.javagrunt.task.youtube.yaml

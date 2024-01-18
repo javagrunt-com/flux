@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: youtube-task
+  namespace: javagrunt-com
+spec:
+  schedule: "@hourly"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: youtube-task
+              image: dashaun/com.javagrunt.task.youtube:v0.0.2
+              imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
