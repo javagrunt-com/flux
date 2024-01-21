@@ -11,10 +11,10 @@ spec:
         autoscaling.knative.dev/window: "60s"
     spec:
       containers:
-        - image: dashaun/com.javagrunt.service.youtube:v0.0.2
+        - image: dashaun/com.javagrunt.service.youtube:v0.0.3
           env:
           - name: ZIPKIN_ENDPOINT
             value: http://openzipkin.javagrunt-com.svc.cluster.local:9411/api/v2/spans
           envFrom:
-          - secretRef:
-              name: redis-cloud  
+            - secretRef:
+                name: yugabyte-cloud
