@@ -8,10 +8,10 @@ spec:
     metadata:
       annotations:
         autoscaling.knative.dev/max-scale: "1"
-        autoscaling.knative.dev/window: "60s"
+        autoscaling.knative.dev/window: "300s"
     spec:
       containers:
-        - image: dashaun/com.javagrunt.service.youtube:v0.0.3
+        - image: dashaun/com.javagrunt.service.youtube:v0.0.4
           env:
           - name: ZIPKIN_ENDPOINT
             value: http://openzipkin.javagrunt-com.svc.cluster.local:9411/api/v2/spans
