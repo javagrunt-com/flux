@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
             - name: youtube-task
-              image: dashaun/com.javagrunt.task.youtube:v0.0.5
+              image: dashaun/com.javagrunt.task.youtube:v0.0.6
               imagePullPolicy: IfNotPresent
               env:
               - name: YOUTUBE_FEED_URL
