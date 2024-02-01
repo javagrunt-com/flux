@@ -1,0 +1,17 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: youtube-web
+  namespace: javagrunt-com
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+        autoscaling.knative.dev/window: "300s"
+    spec:
+      containers:
+        - image: dashaun/com.javagrunt.web.youtube:v0.0.1
+          env:
+          - name: ZIPKIN_ENDPOINT
+            value: http://openzipkin.javagrunt-com.svc.cluster.local:9411/api/v2/spans
