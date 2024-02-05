@@ -5,3 +5,4 @@ resources:
   - com.javagrunt.service.gateway.yaml
   - com.javagrunt.service.youtube.yaml
   - com.javagrunt.task.youtube.yaml
+  - spring-boot-native-pi-default.yaml

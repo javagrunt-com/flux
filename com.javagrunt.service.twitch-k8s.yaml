@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: twitch-service
+  name: twitch-service
+  namespace: javagrunt-com
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: twitch-service
+  template:
+    metadata:
+      labels:
+        app: twitch-service
+    spec:
+      containers:
+        - name: twitch-service
+          image: dashaun/com.javagrunt.service.twitch:v0.0.7
+          args:
+            - netexec
+          ports:
+            - containerPort: 8080
+              name: http
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+spec:
+  selector:
+    app: app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

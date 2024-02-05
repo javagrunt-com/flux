@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: twitch-service
+  namespace: javagrunt-com
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+        autoscaling.knative.dev/window: "300s"
+    spec:
+      containers:
+        - image: dashaun/com.javagrunt.service.twitch:v0.0.7
+          env:
+          - name: ZIPKIN_ENDPOINT
+            value: http://openzipkin.javagrunt-com.svc.cluster.local:9411/api/v2/spans
+          envFrom:
+            - secretRef:
+                name: yugabyte-cloud
