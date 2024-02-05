@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: spring-boot-native-pi
-  name: spring-boot-native-pi
+    app: hello-service
+  name: hello-service
   namespace: javagrunt-com
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spring-boot-native-pi
+      app: hello-service
   template:
     metadata:
       labels:
-        app: spring-boot-native-pi
+        app: hello-service
     spec:
       containers:
-        - name: spring-boot-native-pi
-          image: dashaun/spring-boot-native-pi-default:latest
+        - name: hello-service
+          image: dashaun/com.javagrunt.service.hello:v0.0.2
           ports:
             - containerPort: 8080
               name: http
@@ -27,12 +27,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name:  spring-boot-native-pi
+  name:  hello-service
   namespace: javagrunt-com
 spec:
   selector:
-    app:  spring-boot-native-pi
+    app:  hello-service
   ports:
     - protocol: TCP
-      port: 80
+      port: 8080
       targetPort: 8080
