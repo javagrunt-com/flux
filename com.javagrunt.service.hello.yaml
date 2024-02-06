@@ -36,3 +36,24 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: hello-service
+spec:
+  advanced:
+    restoreToOriginalReplicaCount: true
+  scaleTargetRef:
+    name: hello-service
+  pollingInterval:  1
+  cooldownPeriod:   3
+  minReplicaCount:  0
+  maxReplicaCount:  3
+  triggers:
+    - type: external
+      metadata:
+        scalerAddress: gateway-service.dev-javagrunt-com:9090
+        threshold: "2"      
