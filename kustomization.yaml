@@ -1,8 +1,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - com.javagrunt.listener.youtube.yaml
-  - com.javagrunt.service.gateway.yaml
-  - com.javagrunt.service.youtube.yaml
-  - com.javagrunt.task.youtube.yaml
   - com.javagrunt.service.hello.yaml

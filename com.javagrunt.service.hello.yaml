@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: hello-service
-          image: dashaun/com.javagrunt.service.hello:v0.0.7
+          image: dashaun/com.javagrunt.service.hello:v0.0.31
           ports:
             - containerPort: 8080
               name: http
