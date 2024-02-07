@@ -52,7 +52,7 @@ spec:
   pollingInterval:  1
   cooldownPeriod:   3
   minReplicaCount:  0
-  maxReplicaCount:  3
+  maxReplicaCount:  1
   triggers:
     - type: external
       metadata:
