@@ -57,4 +57,6 @@ spec:
     - type: external
       metadata:
         scalerAddress: gateway-service.dev-javagrunt-com:9090
-        threshold: "2"      
+        name: "hello-service"
+        namespace: "dev-javagrunt-com"
+        threshold: "1"      

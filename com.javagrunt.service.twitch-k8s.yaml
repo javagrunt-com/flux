@@ -4,7 +4,7 @@ metadata:
   labels:
     app: twitch-service
   name: twitch-service
-  namespace: javagrunt-com
+  namespace: dev-javagrunt-com
 spec:
   replicas: 1
   selector:

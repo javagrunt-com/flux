@@ -2,7 +2,7 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: youtube-web
-  namespace: javagrunt-com
+  namespace: dev-javagrunt-com
 spec:
   template:
     metadata:

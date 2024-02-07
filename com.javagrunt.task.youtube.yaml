@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: youtube-task
-  namespace: javagrunt-com
+  namespace: dev-javagrunt-com
 spec:
   schedule: "@hourly"
   jobTemplate:

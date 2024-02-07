@@ -1,22 +1,62 @@
-apiVersion: serving.knative.dev/v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: youtube-listener
-  namespace: javagrunt-com
   labels:
-    networking.knative.dev/visibility: cluster-local
+    app: youtube-listener
+  name: youtube-listener
+  namespace: dev-javagrunt-com
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: youtube-listener
   template:
     metadata:
-      annotations:
-        autoscaling.knative.dev/max-scale: "1"
-        autoscaling.knative.dev/window: "30s"
+      labels:
+        app: youtube-listener
     spec:
       containers:
-        - image: dashaun/com.javagrunt.listener.youtube:v0.0.10
-          env:
-          - name: ZIPKIN_ENDPOINT
-            value: http://openzipkin.javagrunt-com.svc.cluster.local:9411/api/v2/spans
-          envFrom:
-          - secretRef:
-              name: redis-cloud  
+        - name: youtube-listener
+          image: dashaun/com.javagrunt.listener.youtube:v0.0.10
+          ports:
+            - containerPort: 8080
+              name: http
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name:  youtube-listener
+  namespace: dev-javagrunt-com
+spec:
+  selector:
+    app:  youtube-listener
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: youtube-listener
+  namespace: dev-javagrunt-com
+spec:
+  advanced:
+    restoreToOriginalReplicaCount: true
+  scaleTargetRef:
+    name: youtube-listener
+  pollingInterval:  1
+  cooldownPeriod:   3
+  minReplicaCount:  0
+  maxReplicaCount:  3
+  triggers:
+    - type: external
+      metadata:
+        scalerAddress: gateway-service.dev-javagrunt-com:9090
+        name: "youtube-listener"
+        namespace: "dev-javagrunt-com"
+        threshold: "1"      
