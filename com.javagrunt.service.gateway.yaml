@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: gateway-service
-          image: dashaun/com.javagrunt.service.gateway:v0.0.22
+          image: dashaun/com.javagrunt.service.gateway:v0.0.23
           ports:
             - containerPort: 8080
               name: http
